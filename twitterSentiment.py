@@ -3,11 +3,13 @@ import json
 def main():
     sa = SentimentAnalyzer()
     # for each json calculate the sentiment for each day
-    files = ['realTimeAAPL.json', 'realTimeAMZN.json', 'realTimeGOOGL.json', 'realTimeMSFT.json', 'realTimeTSLA.json']
+    files = ['AAPL.json', 'AMZN.json', 'GOOGL.json', 'MSFT.json', 'TSLA.json']
     day_sentiment = {}
     for file in files:
         with open(file) as fp:
             for line in fp:
+                if line == '\n':
+                    continue
                 s = len(line)
                 data = json.loads(line)
                 date = list(data.keys())[0]
@@ -28,8 +30,8 @@ def main():
 
 
 
-    print(day_sentiment)
-    with open('sentimentData.json', 'w') as outfile:
+    print(len(day_sentiment.keys()))
+    with open('historicSentimentData.json', 'w') as outfile:
         json.dump(day_sentiment, outfile)
     # json.loads(data)
 

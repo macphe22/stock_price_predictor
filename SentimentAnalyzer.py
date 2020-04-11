@@ -41,6 +41,8 @@ class SentimentAnalyzer:
         :return: score for that day
         '''
         overall_score = 0
+        count = 0
         for tweet in tweets:
             overall_score += self.analyze_line(tweet)
-        return overall_score
+            count += 1
+        return overall_score/count
