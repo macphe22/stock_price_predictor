@@ -16,8 +16,8 @@ def main():
                 tweets = data[date]
                 score = sa.analyze_day(tweets)
                 # now create the dictionary to save all of the stuff and write to a new file
-                c = file[8:]
-                c_name = c[:-5]
+                # c = file[8:]
+                c_name = file[:len(file) - 5]
                 if date in day_sentiment:
                     if c_name in day_sentiment[date]:
                         day_sentiment[date][c_name] += score
